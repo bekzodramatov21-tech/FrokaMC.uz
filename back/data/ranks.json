@@ -1,0 +1,245 @@
+[
+  {
+    "id": "imperator",
+    "name": "IMPERATOR",
+    "badge": "🟠",
+    "color": "#f59e0b",
+    "gradient": "from-amber-500 to-orange-600",
+    "border": "border-amber-500",
+    "glow": "shadow-amber-500/30",
+    "price30": 49000,
+    "priceForever": 128000,
+    "popular": true,
+    "image": "assets/images/rank-imperator.png",
+    "commands": [
+      { "cmd": "/kit imperator", "desc": "Rankning eksklyuziv kiti" },
+      { "cmd": "/near", "desc": "Yaqindagi o'yinchilarni ko'rish" },
+      { "cmd": "/invsee", "desc": "Boshqa o'yinchilar inventorini ko'rish" },
+      { "cmd": "/fly", "desc": "Server bo'ylab erkin uchish" }
+    ],
+    "features": [
+      { "name": "Enderchest", "value": "6 Qator" },
+      { "name": "Teleportga cheklov", "value": "Yo'q (Cheksiz)" },
+      { "name": "Homelar soni", "value": "20 ta" },
+      { "name": "RG (Hudud) bloklar", "value": "15 ta" },
+      { "name": "Auksion slotlari", "value": "16 ta" },
+      { "name": "Teleport kutish vaqti", "value": "0 soniya (Darhol)" }
+    ]
+  },
+  {
+    "id": "general",
+    "name": "GENERAL",
+    "badge": "⚡️",
+    "color": "#eab308",
+    "gradient": "from-yellow-500 to-amber-600",
+    "border": "border-yellow-500",
+    "glow": "shadow-yellow-500/30",
+    "price30": 38000,
+    "priceForever": 98000,
+    "popular": false,
+    "image": "assets/images/rank-general.png",
+    "commands": [
+      { "cmd": "/kit general", "desc": "General maxsus kiti" },
+      { "cmd": "/fly", "desc": "Server bo'ylab erkin uchish" }
+    ],
+    "features": [
+      { "name": "Enderchest", "value": "6 Qator" },
+      { "name": "Teleportga cheklov", "value": "Yo'q (Cheksiz)" },
+      { "name": "Homelar soni", "value": "18 ta" },
+      { "name": "RG (Hudud) bloklar", "value": "15 ta" },
+      { "name": "Auksion slotlari", "value": "13 ta" },
+      { "name": "Teleport kutish vaqti", "value": "0 soniya (Darhol)" }
+    ]
+  },
+  {
+    "id": "afsona",
+    "name": "AFSONA",
+    "badge": "🩵",
+    "color": "#38bdf8",
+    "gradient": "from-sky-400 to-cyan-600",
+    "border": "border-sky-400",
+    "glow": "shadow-sky-400/30",
+    "price30": 29000,
+    "priceForever": 76000,
+    "popular": false,
+    "image": "assets/images/rank-afsona.png",
+    "commands": [
+      { "cmd": "/kit afsona", "desc": "Afsona maxsus kiti" },
+      { "cmd": "/smithtable", "desc": "Smithtable virtual ochish" },
+      { "cmd": "/stonecutter", "desc": "Stonecutter virtual ochish" },
+      { "cmd": "/grindstone", "desc": "Grindstone virtual ochish" }
+    ],
+    "features": [
+      { "name": "Enderchest", "value": "5 Qator" },
+      { "name": "Homelar soni", "value": "15 ta" },
+      { "name": "RG (Hudud) bloklar", "value": "10 ta" },
+      { "name": "Auksion slotlari", "value": "14 ta" },
+      { "name": "Teleport kutish vaqti", "value": "3 soniya" }
+    ]
+  },
+  {
+    "id": "elita",
+    "name": "ELITA",
+    "badge": "💞",
+    "color": "#c084fc",
+    "gradient": "from-purple-500 to-fuchsia-600",
+    "border": "border-purple-400",
+    "glow": "shadow-purple-400/30",
+    "price30": 21000,
+    "priceForever": 57000,
+    "popular": true,
+    "image": "assets/images/rank-elita.png",
+    "commands": [
+      { "cmd": "/kit elita", "desc": "Elita maxsus kiti" },
+      { "cmd": "/jump", "desc": "Qaragan blokga sakrab teleport qilish" },
+      { "cmd": "/afk", "desc": "AFK holatiga o'tish" },
+      { "cmd": "/setwarp", "desc": "Shaxsiy warp qo'yish" },
+      { "cmd": "/delwarp", "desc": "Warpni o'chirish" },
+      { "cmd": "/repair", "desc": "Qo'ldagi buyumni avtomatik tuzatish" }
+    ],
+    "features": [
+      { "name": "Enderchest", "value": "5 Qator" },
+      { "name": "AFK himoyasi", "value": "AFK da serverdan kick qilinmaydi" },
+      { "name": "Homelar soni", "value": "12 ta" },
+      { "name": "RG (Hudud) bloklar", "value": "8 ta" },
+      { "name": "Auksion slotlari", "value": "12 ta" },
+      { "name": "Teleport kutish vaqti", "value": "3 soniya" }
+    ]
+  },
+  {
+    "id": "titan",
+    "name": "TITAN",
+    "badge": "🚩",
+    "color": "#ef4444",
+    "gradient": "from-red-500 to-rose-700",
+    "border": "border-red-500",
+    "glow": "shadow-red-500/30",
+    "price30": 16000,
+    "priceForever": 43000,
+    "popular": false,
+    "image": "assets/images/rank-titan.png",
+    "commands": [
+      { "cmd": "/kit titan", "desc": "Titan jangchi kiti" },
+      { "cmd": "/time", "desc": "Shaxsiy vaqtni belgilash" },
+      { "cmd": "/weather", "desc": "Shaxsiy ob-havoni belgilash" },
+      { "cmd": "/loom", "desc": "Loom virtual stolini ochish" },
+      { "cmd": "/carttable", "desc": "Kartograf stolini ochish" },
+      { "cmd": "/firework", "desc": "Salute (Firework) sozlash" }
+    ],
+    "features": [
+      { "name": "Enderchest", "value": "5 Qator" },
+      { "name": "Homelar soni", "value": "10 ta" },
+      { "name": "RG (Hudud) bloklar", "value": "8 ta" },
+      { "name": "Auksion slotlari", "value": "12 ta" },
+      { "name": "Teleport kutish vaqti", "value": "4 soniya" }
+    ]
+  },
+  {
+    "id": "alpomish",
+    "name": "ALPOMISH",
+    "badge": "✨",
+    "color": "#818cf8",
+    "gradient": "from-indigo-500 to-blue-600",
+    "border": "border-indigo-400",
+    "glow": "shadow-indigo-400/30",
+    "price30": 14000,
+    "priceForever": 29000,
+    "popular": false,
+    "image": "assets/images/rank-alpomish.png",
+    "commands": [
+      { "cmd": "/kit alpomish", "desc": "Alpomish maxsus kiti" },
+      { "cmd": "/bc", "desc": "Server bo'ylab broadcast e'lon yozish" },
+      { "cmd": "/ext", "desc": "O'zidan olovni o'chirish" },
+      { "cmd": "/msgtoggle", "desc": "Shaxsiy xabarlarni yoqish/o'chirish" },
+      { "cmd": "/paytoggle", "desc": "Pul qabul qilishni yoqish/o'chirish" },
+      { "cmd": "/tptoggle", "desc": "Teleport so'rovlarini boshqarish" }
+    ],
+    "features": [
+      { "name": "Enderchest", "value": "5 Qator" },
+      { "name": "Homelar soni", "value": "8 ta" },
+      { "name": "RG (Hudud) bloklar", "value": "7 ta" },
+      { "name": "Auksion slotlari", "value": "11 ta" },
+      { "name": "Teleport kutish vaqti", "value": "4 soniya" }
+    ]
+  },
+  {
+    "id": "ritsar",
+    "name": "RITSAR",
+    "badge": "💥",
+    "color": "#06b6d4",
+    "gradient": "from-cyan-500 to-teal-600",
+    "border": "border-cyan-400",
+    "glow": "shadow-cyan-400/30",
+    "price30": 10000,
+    "priceForever": 21000,
+    "popular": false,
+    "image": "assets/images/rank-ritsar.png",
+    "commands": [
+      { "cmd": "/kit ritsar", "desc": "Ritsar himoya kiti" },
+      { "cmd": "/back", "desc": "O'lim yoki oldingi joyga qaytish" },
+      { "cmd": "/ec", "desc": "Enderchestni virtual ochish" },
+      { "cmd": "/wbench", "desc": "Crafting table (Workbench) ochish" },
+      { "cmd": "/itemname", "desc": "Buyum nomini o'zgartirish" }
+    ],
+    "features": [
+      { "name": "Enderchest", "value": "4 Qator" },
+      { "name": "Tajriba saqlash", "value": "O'limda XP ni saqlab qolish" },
+      { "name": "Chat imkoni", "value": "Rangli harflarda yoza olish" },
+      { "name": "Homelar soni", "value": "6 ta" },
+      { "name": "RG (Hudud) bloklar", "value": "6 ta" },
+      { "name": "Auksion slotlari", "value": "10 ta" },
+      { "name": "Teleport kutish vaqti", "value": "5 soniya" }
+    ]
+  },
+  {
+    "id": "qahramon",
+    "name": "QAHRAMON",
+    "badge": "🔥",
+    "color": "#10b981",
+    "gradient": "from-emerald-500 to-green-600",
+    "border": "border-emerald-500",
+    "glow": "shadow-emerald-500/30",
+    "price30": 6000,
+    "priceForever": 14000,
+    "popular": false,
+    "image": "assets/images/rank-qahramon.png",
+    "commands": [
+      { "cmd": "/kit qahramon", "desc": "Qahramon boshlang'ich kiti" },
+      { "cmd": "/clear", "desc": "Inventarni tozalash" },
+      { "cmd": "/feed", "desc": "Ochlik (hunger) darajasini to'ldirish" },
+      { "cmd": "/heal", "desc": "Salomatlik (HP) ni to'ldirish" }
+    ],
+    "features": [
+      { "name": "Enderchest", "value": "4 Qator" },
+      { "name": "Homelar soni", "value": "5 ta" },
+      { "name": "RG (Hudud) bloklar", "value": "4 ta" },
+      { "name": "Auksion slotlari", "value": "9 ta" },
+      { "name": "Teleport kutish vaqti", "value": "6 soniya" }
+    ]
+  },
+  {
+    "id": "askar",
+    "name": "ASKAR",
+    "badge": "💱",
+    "color": "#38bdf8",
+    "gradient": "from-blue-400 to-sky-600",
+    "border": "border-sky-400",
+    "glow": "shadow-sky-400/30",
+    "price30": 4000,
+    "priceForever": 9000,
+    "popular": false,
+    "image": "assets/images/rank-askar.png",
+    "commands": [
+      { "cmd": "/kit askar", "desc": "Askar boshlang'ich kiti" },
+      { "cmd": "/hat", "desc": "Qo'ldagi blokni boshga kiyish" },
+      { "cmd": "/top", "desc": "Eng yuqori blokga teleport bo'lish" }
+    ],
+    "features": [
+      { "name": "Enderchest", "value": "4 Qator" },
+      { "name": "Homelar soni", "value": "4 ta" },
+      { "name": "RG (Hudud) bloklar", "value": "4 ta" },
+      { "name": "Auksion slotlari", "value": "8 ta" },
+      { "name": "Teleport kutish vaqti", "value": "6 soniya" }
+    ]
+  }
+]

@@ -1,0 +1,25 @@
+# Node.js
+back/node_modules/
+back/package-lock.json
+
+# Environment variables (MUHIM - buni hech qachon gitga yuklamang!)
+back/.env
+
+# Data files (server ma'lumotlari - local bo'lsin)
+back/data/users.json
+back/data/admins.json
+back/data/tierlist.json
+back/data/punishments.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/

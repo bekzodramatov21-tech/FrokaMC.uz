@@ -1,0 +1,13 @@
+{
+  "serverName": "FrokaMC.uz",
+  "serverIp": "play.frokamc.uz",
+  "port": 25565,
+  "version": "1.16.5 - 1.21.x",
+  "onlinePlayers": 142,
+  "maxPlayers": 500,
+  "status": "online",
+  "telegramDonate": "https://t.me/FrokaMC",
+  "telegramChannel": "https://t.me/FrokaMC",
+  "slogan": "O'zbekistonning eng sara va kuchli Minecraft serveri!",
+  "description": "FrokaMC — O'zbekistondagi eng yetakchi va zamonaviy Minecraft loyihasi! Laglarsiz yuqori unumdorlik, o'ta past ping (O'zbekiston bo'ylab <20ms), shafqatsiz PvP arenalari, kuchli anti-cheat himoyasi va adolatli ma'muriyat barchasi siz uchun tayyorlangan."
+}

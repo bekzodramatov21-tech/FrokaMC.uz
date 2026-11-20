@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="uz" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrokaMC.uz — Admin Boshqaruv Paneli</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+</head>
+<body class="bg-[#080c14] text-slate-100 min-h-screen flex flex-col font-sans">
+
+  <!-- ============================================================== -->
+  <!-- ADMIN NAVBAR -->
+  <!-- ============================================================== -->
+  <header class="bg-[#0b101d] border-b border-slate-800 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="assets/images/logo.jpg" alt="Logo" class="w-9 h-9 rounded-lg border border-amber-500/50" />
+          <span class="font-extrabold text-white text-lg font-pixel tracking-wider text-xl">FrokaMC<span class="text-amber-500">.uz</span></span>
+        </a>
+        <span class="bg-amber-500/10 text-amber-400 text-[10px] font-black uppercase px-2 py-0.5 rounded border border-amber-500/30">
+          Admin Panel
+        </span>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="text-xs text-slate-400 hover:text-white transition flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Saytga qaytish
+        </a>
+
+        <div class="h-4 w-px bg-slate-800"></div>
+
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-slate-400">Salom, <span id="admin-display-name" class="font-bold text-amber-400">Admin</span></span>
+          <span id="admin-display-role" class="text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded">Superadmin</span>
+        </div>
+
+        <button 
+          id="admin-logout-btn" 
+          class="bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 px-3 py-1 rounded-lg text-xs font-semibold transition"
+        >
+          Chiqish
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============================================================== -->
+  <!-- MAIN LAYOUT -->
+  <!-- ============================================================== -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full flex flex-col md:flex-row gap-6">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="w-full md:w-64 space-y-1">
+      <button data-tab="overview" class="admin-nav-item w-full flex items-center gap-2.5 px-4 py-3 rounded-xl text-sm font-semibold transition bg-amber-500/20 text-amber-400 border border-amber-500/30">
+        <span>📊</span> Umumiy Statistika
+      </button>
+
+      <button data-tab="tierlist" class="admin-nav-item w-full flex items-center gap-2.5 px-4 py-3 rounded-xl text-sm font-semibold transition text-slate-400 hover:text-white hover:bg-slate-900 border border-transparent">
+        <span>⚔️</span> PvP Tierlist
+      </button>
+
+      <button data-tab="punishments" class="admin-nav-item w-full flex items-center gap-2.5 px-4 py-3 rounded-xl text-sm font-semibold transition text-slate-400 hover:text-white hover:bg-slate-900 border border-transparent">
+        <span>🚫</span> Jazolar / Banlist
+      </button>
+
+      <button data-tab="users" class="admin-nav-item w-full flex items-center gap-2.5 px-4 py-3 rounded-xl text-sm font-semibold transition text-slate-400 hover:text-white hover:bg-slate-900 border border-transparent">
+        <span>👥</span> Ro'yxatdan O'tganlar
+      </button>
+
+      <button data-tab="profile" class="admin-nav-item w-full flex items-center gap-2.5 px-4 py-3 rounded-xl text-sm font-semibold transition text-slate-400 hover:text-white hover:bg-slate-900 border border-transparent">
+        <span>⚙️</span> Gmail & Parol Sozlamasi
+      </button>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 min-w-0">
+      
+      <!-- TAB 1: OVERVIEW STATS -->
+      <section id="tab-overview" class="admin-tab-content space-y-6">
+        <h2 class="text-2xl font-black text-white">Tizim Statistikasi</h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <div class="glass-card p-5 border border-slate-800">
+            <span class="text-slate-400 text-xs font-semibold uppercase">Foydalanuvchilar</span>
+            <div id="stat-total-users" class="text-3xl font-black text-white mt-1">0</div>
+            <span class="text-[11px] text-slate-500">Ro'yxatdan o'tgan o'yinchilar</span>
+          </div>
+
+          <div class="glass-card p-5 border border-slate-800">
+            <span class="text-slate-400 text-xs font-semibold uppercase">Tierlist Jangchilari</span>
+            <div id="stat-total-tierlist" class="text-3xl font-black text-cyan-400 mt-1">0</div>
+            <span class="text-[11px] text-slate-500">E'lon qilingan PvP o'yinchilari</span>
+          </div>
+
+          <div class="glass-card p-5 border border-slate-800">
+            <span class="text-slate-400 text-xs font-semibold uppercase">Faol Banlar</span>
+            <div id="stat-total-bans" class="text-3xl font-black text-red-400 mt-1">0</div>
+            <span class="text-[11px] text-slate-500">Bloklangan hisoblar</span>
+          </div>
+
+          <div class="glass-card p-5 border border-slate-800">
+            <span class="text-slate-400 text-xs font-semibold uppercase">Faol Mutelar</span>
+            <div id="stat-total-mutes" class="text-3xl font-black text-yellow-400 mt-1">0</div>
+            <span class="text-[11px] text-slate-500">Chati cheklanganlar</span>
+          </div>
+
+        </div>
+
+        <!-- Default Admin Credentials Info Card -->
+        <div class="glass-card p-6 border border-amber-500/30 bg-amber-500/5 rounded-2xl">
+          <h3 class="text-base font-bold text-amber-300 mb-2 flex items-center gap-2">
+            <span>🛡️</span> Tizimdagi Standart Admin Hisoblari
+          </h3>
+          <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+            Loyihani topshirish uchun 2 ta xavfsiz boshlang'ich admin akkaunti yaratildi. Siz <span class="text-white font-semibold">"Gmail & Parol Sozlamasi"</span> bo'limidan o'z Gmail pochta manzilingizni ulab, parolingizni yangilashingiz mumkin!
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
+            <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+              <span class="text-slate-400 block mb-1">1-Admin (Bosh Administrator):</span>
+              <div class="text-white">Login: <span class="text-amber-400 font-bold">admin</span></div>
+              <div class="text-white">Parol: <span class="text-amber-400 font-bold">admin123</span></div>
+            </div>
+            <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+              <span class="text-slate-400 block mb-1">2-Admin (Moderator):</span>
+              <div class="text-white">Login: <span class="text-amber-400 font-bold">moderator</span></div>
+              <div class="text-white">Parol: <span class="text-amber-400 font-bold">moder123</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: TIERLIST MANAGEMENT -->
+      <section id="tab-tierlist" class="admin-tab-content space-y-6 hidden">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-black text-white">PvP Tierlist Boshqaruvi</h2>
+            <p class="text-xs text-slate-400 mt-1">O'yinchilarni tierlistga qo'shish, o'chirish yoki tahrirlash</p>
+          </div>
+          <button 
+            onclick="openAddTierlistModal()" 
+            class="px-4 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs rounded-xl flex items-center gap-2 shadow-lg shadow-amber-500/20 transition"
+          >
+            <span>+</span> Yangi O'yinchi Qo'shish
+          </button>
+        </div>
+
+        <div class="glass-card overflow-hidden border border-slate-800">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border-collapse">
+              <thead>
+                <tr class="border-b border-slate-800 bg-slate-900/80 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                  <th class="py-3 px-4">O'yinchi</th>
+                  <th class="py-3 px-4">Tier</th>
+                  <th class="py-3 px-4">ELO</th>
+                  <th class="py-3 px-4">Uslub (Playstyle)</th>
+                  <th class="py-3 px-4">K/D</th>
+                  <th class="py-3 px-4 text-right">Amallar</th>
+                </tr>
+              </thead>
+              <tbody id="admin-tierlist-tbody" class="divide-y divide-slate-800/60">
+                <!-- Loaded via admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: PUNISHMENTS MANAGEMENT -->
+      <section id="tab-punishments" class="admin-tab-content space-y-6 hidden">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-black text-white">Jazolar / Banlist Boshqaruvi</h2>
+            <p class="text-xs text-slate-400 mt-1">Qoidabuzarlarga jazo berish, muddatini o'zgartirish yoki unban qilish</p>
+          </div>
+          <button 
+            onclick="openAddPunishModal()" 
+            class="px-4 py-2.5 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white font-bold text-xs rounded-xl flex items-center gap-2 shadow-lg shadow-red-500/20 transition"
+          >
+            <span>+</span> Yangi Jazo Qo'shish
+          </button>
+        </div>
+
+        <div class="glass-card overflow-hidden border border-slate-800">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border-collapse">
+              <thead>
+                <tr class="border-b border-slate-800 bg-slate-900/80 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                  <th class="py-3 px-4">O'yinchi</th>
+                  <th class="py-3 px-4">Turi</th>
+                  <th class="py-3 px-4">Sababi</th>
+                  <th class="py-3 px-4">Operator</th>
+                  <th class="py-3 px-4">Muddati</th>
+                  <th class="py-3 px-4">Holati</th>
+                  <th class="py-3 px-4 text-right">Amallar</th>
+                </tr>
+              </thead>
+              <tbody id="admin-punish-tbody" class="divide-y divide-slate-800/60">
+                <!-- Loaded via admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: REGISTERED USERS -->
+      <section id="tab-users" class="admin-tab-content space-y-6 hidden">
+        <div>
+          <h2 class="text-2xl font-black text-white">Ro'yxatdan O'tgan Foydalanuvchilar</h2>
+          <p class="text-xs text-slate-400 mt-1">Minecraft niki orqali saytga kirgan va hisob ochgan o'yinchilar</p>
+        </div>
+
+        <div class="glass-card overflow-hidden border border-slate-800">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border-collapse">
+              <thead>
+                <tr class="border-b border-slate-800 bg-slate-900/80 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                  <th class="py-3 px-4">Minecraft Niki</th>
+                  <th class="py-3 px-4">Rank</th>
+                  <th class="py-3 px-4">Ro'yxatdan o'tgan</th>
+                  <th class="py-3 px-4">Oxirgi kirish</th>
+                </tr>
+              </thead>
+              <tbody id="admin-users-tbody" class="divide-y divide-slate-800/60">
+                <!-- Loaded via admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: PROFILE & GMAIL / PASSWORD SETTINGS -->
+      <section id="tab-profile" class="admin-tab-content space-y-6 hidden">
+        <div>
+          <h2 class="text-2xl font-black text-white">Admin Sozlamalari</h2>
+          <p class="text-xs text-slate-400 mt-1">Gmail pochtangizni ulang va admin parolingizni yangilang</p>
+        </div>
+
+        <div class="glass-card p-6 sm:p-8 border border-slate-800 max-w-xl">
+          <form id="admin-profile-form" class="space-y-4">
+            
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Ko'rinadigan ismingiz:</label>
+              <input 
+                type="text" 
+                id="profile-name-input" 
+                placeholder="Bosh Admin" 
+                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:border-amber-400 focus:outline-none text-sm"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Gmail / Email manzilingiz:</label>
+              <div class="relative">
+                <input 
+                  type="email" 
+                  id="profile-email-input" 
+                  placeholder="masalan: sherzod.ramatov@gmail.com" 
+                  class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:border-amber-400 focus:outline-none text-sm"
+                />
+              </div>
+              <span class="text-[11px] text-slate-500 mt-1 block">Xabarnomalar va hisobni tiklash uchun</span>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800">
+              <h4 class="text-sm font-bold text-amber-400 mb-3">Parolni o'zgartirish (ixtiyoriy)</h4>
+
+              <div class="space-y-3">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1">Joriy parol:</label>
+                  <input 
+                    type="password" 
+                    id="profile-current-pass" 
+                    placeholder="Joriy parolingizni kiriting" 
+                    class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:border-amber-400 focus:outline-none text-sm"
+                  />
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Yangi parol:</label>
+                    <input 
+                      type="password" 
+                      id="profile-new-pass" 
+                      placeholder="Kamida 6 belgi" 
+                      class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:border-amber-400 focus:outline-none text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Yangi parolni takrorlang:</label>
+                    <input 
+                      type="password" 
+                      id="profile-confirm-pass" 
+                      placeholder="Takrorlang" 
+                      class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:border-amber-400 focus:outline-none text-sm"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <button 
+                type="submit" 
+                class="px-6 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold rounded-xl transition shadow-lg shadow-amber-500/20 text-sm"
+              >
+                O'zgarishlarni Saqlash
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: ADMIN LOGIN -->
+  <!-- ============================================================== -->
+  <div id="admin-login-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#050811]/90 backdrop-blur-md">
+    <div class="glass-card bg-[#0b101d] max-w-sm w-full p-6 sm:p-8 rounded-2xl border border-slate-700 shadow-2xl">
+      <div class="text-center mb-6">
+        <img src="assets/images/logo.jpg" alt="Logo" class="w-14 h-14 rounded-2xl mx-auto mb-3 border-2 border-amber-500/60 shadow-lg" />
+        <h3 class="text-xl font-black text-white">Admin Tizimiga Kirish</h3>
+        <p class="text-xs text-slate-400 mt-1">FrokaMC.uz Boshqaruv Markazi</p>
+      </div>
+
+      <form id="admin-login-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Login:</label>
+          <input 
+            type="text" 
+            id="admin-username-input" 
+            placeholder="admin yoki moderator" 
+            required 
+            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:border-amber-400 focus:outline-none text-sm font-mono"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Parol:</label>
+          <input 
+            type="password" 
+            id="admin-password-input" 
+            placeholder="••••••••" 
+            required 
+            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:border-amber-400 focus:outline-none text-sm"
+          />
+        </div>
+
+        <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 text-[11px] text-slate-400">
+          Standart: <span class="text-amber-400 font-mono">admin / admin123</span> yoki <span class="text-amber-400 font-mono">moderator / moder123</span>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold rounded-xl text-sm transition shadow-lg shadow-amber-500/20"
+        >
+          Kirish
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: ADD TIERLIST PLAYER -->
+  <!-- ============================================================== -->
+  <div id="add-tierlist-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden modal-overlay modal-backdrop">
+    <div class="glass-card bg-[#0b101d] max-w-md w-full p-6 rounded-2xl border border-slate-700 shadow-2xl relative">
+      <button onclick="closeAddTierlistModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1">✕</button>
+      <h3 class="text-lg font-bold text-white mb-4">Tierlistga O'yinchi Qo'shish</h3>
+      
+      <form id="add-tierlist-form" class="space-y-3.5">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Minecraft Niki:</label>
+          <input type="text" id="tier-player-nick" required placeholder="Masalan: AxoPlayer" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white font-mono text-sm focus:border-amber-400 focus:outline-none" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Tier:</label>
+            <select id="tier-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white text-sm focus:border-amber-400 focus:outline-none">
+              <option value="S+">S+ (Afsona)</option>
+              <option value="S">S (Master)</option>
+              <option value="A" selected>A (Kuchli)</option>
+              <option value="B">B (O'rtacha)</option>
+              <option value="C">C (Boshlang'ich)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">ELO Ball:</label>
+            <input type="number" id="tier-points" value="1250" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white text-sm focus:border-amber-400 focus:outline-none" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Jang uslubi (Playstyle):</label>
+          <input type="text" id="tier-playstyle" placeholder="Sword & Pot / Crystal PvP / Axe" value="Sword Combo" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white text-sm focus:border-amber-400 focus:outline-none" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Kills (O'ldirishlar):</label>
+            <input type="number" id="tier-kills" value="50" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white text-sm focus:border-amber-400 focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Deaths (O'limlar):</label>
+            <input type="number" id="tier-deaths" value="12" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white text-sm focus:border-amber-400 focus:outline-none" />
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold rounded-xl text-sm transition mt-2">
+          Qo'shish
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: ADD PUNISHMENT -->
+  <!-- ============================================================== -->
+  <div id="add-punish-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden modal-overlay modal-backdrop">
+    <div class="glass-card bg-[#0b101d] max-w-md w-full p-6 rounded-2xl border border-slate-700 shadow-2xl relative">
+      <button onclick="closeAddPunishModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1">✕</button>
+      <h3 class="text-lg font-bold text-white mb-4">Qoidabuzarga Jazo Belgilash</h3>
+      
+      <form id="add-punish-form" class="space-y-3.5">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Minecraft Niki:</label>
+          <input type="text" id="punish-player-nick" required placeholder="Masalan: Cheater123" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white font-mono text-sm focus:border-amber-400 focus:outline-none" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Jazo Turi:</label>
+            <select id="punish-type-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white text-sm focus:border-amber-400 focus:outline-none">
+              <option value="BAN">BAN</option>
+              <option value="MUTE">MUTE</option>
+              <option value="KICK">KICK</option>
+              <option value="JAIL">JAIL</option>
+              <option value="WARN">WARN</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Muddati:</label>
+            <input type="text" id="punish-duration" placeholder="30 kun / Abadiy / 24 soat" value="30 kun" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white text-sm focus:border-amber-400 focus:outline-none" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Jazo Sababi:</label>
+          <textarea id="punish-reason" rows="2" required placeholder="Masalan: KillAura cheat ishlatganligi uchun" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white text-sm focus:border-amber-400 focus:outline-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-2.5 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white font-bold rounded-xl text-sm transition mt-2">
+          Jazoni Saqlash
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

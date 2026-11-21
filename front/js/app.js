@@ -333,16 +333,6 @@ function updateUIAfterSessionChange() {
 // ----------------------------------------------------
 // Auth Handlers (Unified Login & Register)
 // ----------------------------------------------------
-function fillQuickLogin(username, password) {
-  const uInput = document.getElementById('input-login-username');
-  const pInput = document.getElementById('input-login-password');
-  if (uInput && pInput) {
-    uInput.value = username;
-    pInput.value = password;
-    triggerLoginAvatarPreview(username);
-    uInput.focus();
-  }
-}
 
 function togglePasswordVisibility(inputId) {
   const input = document.getElementById(inputId);
